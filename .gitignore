@@ -1,0 +1,6 @@
+*.png
+*.jpg
+*.pdparams
+*.mdb
+*.log
+results/*/runs

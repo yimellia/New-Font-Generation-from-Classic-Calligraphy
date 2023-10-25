@@ -1,0 +1,59 @@
+use_half: False
+
+work_dir: ./results/LTX204/
+data_path: ./results/LTX204/lmdb/  # path/to/saved/lmdb
+data_meta: ./results/LTX204/meta/train.json  #meta/train.json
+content_reference_json: ./meta204/JYS.json
+content_font: "jys" #content file name
+language: "chn"
+
+C: 32
+input_size: 128
+num_heads: 8
+kshot: 10
+
+g_args:
+  comp_enc:
+    norm: "in"
+    activ: relu
+  dec:
+    norm: "in"
+    activ: relu
+    out: sigmoid
+  content_enc:
+    C_out: 256
+    content_sigmoid: False
+    
+d_args:
+  w_norm: spectral
+  activ: relu
+  gap_activ: relu
+  res_scale_var: False
+
+# losses
+pixel_loss_type: l1
+pixel_w: 0.1
+gan_w: 1.0
+
+init: xavier
+dset_aug:
+  normalize: True
+
+cv_n_unis: 20
+cv_n_fonts: 10
+
+batch_size: 16
+n_workers: 6
+iter: 205000 #50epoch (~4.2k data)
+g_lr: 2e-4
+d_lr: 8e-4
+seed: 1020
+step_size: 1000 #change lr for each 1k iter
+gamma: 0.95
+overwrite: False
+adam_betas: [0.0, 0.9]
+
+print_freq: 100
+val_freq: 500
+save_freq: 8000
+tb_freq: 100

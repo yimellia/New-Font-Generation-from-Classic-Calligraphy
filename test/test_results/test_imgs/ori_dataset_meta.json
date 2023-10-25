@@ -1,0 +1,12 @@
+{
+    "test_imgs": {
+        "path": "./test/test_imgs",
+        "charlist": [
+            "思"
+        ]
+    },
+    "common_words": {
+        "path": "./meta204_split/common_words",
+        "charlist": []
+    }
+}
